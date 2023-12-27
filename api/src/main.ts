@@ -23,6 +23,7 @@ process.on('SIGINT', async () => {
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, new ExpressAdapter());
+  app.setGlobalPrefix('i18n');
   addPipesAndFilters(app);
   closables.push(app);
 

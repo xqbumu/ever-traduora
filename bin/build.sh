@@ -8,7 +8,7 @@ bin/install-deps.sh
 [ -e dist ] && rm -r dist
 
 # Build webapp
-cd webapp && yarn build --prod
+cd webapp && yarn build --configuration production --base-href /i18n/ --deploy-url /i18n/
 
 # Build api
 cd ../api && yarn build

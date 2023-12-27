@@ -102,7 +102,7 @@ export const addPipesAndFilters = (app: NestExpressApplication) => {
     }),
   );
 
-  app.useStaticAssets(config.publicDir, { index: false, redirect: false });
+  app.useStaticAssets(config.publicDir, { index: false, redirect: false, prefix: "/i18n/" });
 
   app.setBaseViewsDir('src/templates');
 
