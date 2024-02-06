@@ -1,3 +1,5 @@
+const iconv = require("iconv-lite");
+const jschardet = require("jschardet"); // 用于自动识别文件编码
 import {
   BadRequestException,
   Controller,
@@ -78,7 +80,14 @@ export class ImportController {
     try {
       const locale = await this.localeRepo.findOneOrFail({ where: { code: query.locale } });
 
-      const contents = file.buffer.toString('utf-8') as string;
+      // 使用 jschardet 自动识别文件编码
+      const encodingResult = jschardet.detect(file.buffer);
+      const detectedEncoding = encodingResult.encoding.toLowerCase();
+
+      // 如果已经是 UTF-8 编码，则不需要转换
+      const contents = detectedEncoding === "utf-8"
+        ? file.buffer.toString('utf-8') as string
+        : iconv.decode(file.buffer, detectedEncoding);
 
       const incoming = await this.parse(query.format, contents);
 

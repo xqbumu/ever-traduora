@@ -5,6 +5,27 @@ export const loadFixture = (name: string) => {
   return fs.readFileSync(`src/formatters/fixtures/${name}`, { encoding: 'utf-8' });
 };
 
+export const simpleGb2312FormatFixture: IntermediateTranslationFormat = {
+  translations: [
+    {
+      term: '支付方法',
+      translation: '支付方法',
+    },
+    {
+      term: 'pleaseWait',
+      translation: '處理中請稍候',
+    },
+    {
+      term: 'yes',
+      translation: '是',
+    },
+    {
+      term: 'no',
+      translation: `否`,
+    },
+  ],
+};
+
 export const simpleFormatFixture: IntermediateTranslationFormat = {
   translations: [
     {
