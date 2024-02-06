@@ -112,5 +112,6 @@
     "node": ">=14.0.0",
     "yarn": ">=1.13.0"
   },
-  "snyk": true
+  "snyk": true,
+  "packageManager": "yarn@1.22.21"
 }
